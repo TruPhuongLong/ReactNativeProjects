@@ -1,4 +1,4 @@
 import { AppRegistry } from 'react-native';
-import App from './App';
+import ListTask from './src/components/ListTask';
 
-AppRegistry.registerComponent('ToDoList', () => App);
+AppRegistry.registerComponent('ToDoList', () => ListTask);
