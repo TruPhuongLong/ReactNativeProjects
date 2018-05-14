@@ -6,7 +6,7 @@ import {
     SectionList,
     StyleSheet,
 } from 'react-native';
-import getUsers from '../services/userApi';
+import initApi from '../services/userApi';
 import AddTask from './AddTask';
 import ItemTask from './ItemTask';
 
@@ -20,6 +20,18 @@ export default class ListTask extends Component {
         this.state = {
             listUsers: []
         }
+    }
+
+    componentDidMount() {
+        initApi()
+            .then(data => {
+                // this.setState({
+                //     listUsers: data
+                // })
+                // console.log(this.state.listUsers)
+                console.log(data);
+            })
+            .catch(error => console.log(error));
     }
 
 
