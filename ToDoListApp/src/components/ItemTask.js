@@ -13,7 +13,7 @@ export default class ItemTask extends Component {
         super();
 
     }
-// aaaa
+
     componentDidMount(){
         const {configureNext, Presets, create, Types, Properties} = LayoutAnimation;
         configureNext({
@@ -38,7 +38,7 @@ export default class ItemTask extends Component {
     render() {
         return (
             <View style={localStyles.item}>
-                <Text style={localStyles.text}>{this.props.item.text} </Text>
+                <Text style={localStyles.text}>{this.props.item.content} </Text>
                 <TouchableOpacity onPress={() => this.props.close(this.props.item)}>
                     <Image source={require('../assets/images/close.png')} style={localStyles.image}/>
                 </TouchableOpacity>
@@ -52,7 +52,7 @@ const localStyles = StyleSheet.create({
         flexDirection: 'row',
         padding: 10,
         margin: 5,
-        backgroundColor: 'gray'
+        backgroundColor: 'gray',
     },
     text: {
         flex: 1,
