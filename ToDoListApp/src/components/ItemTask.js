@@ -16,7 +16,6 @@ export default class ItemTask extends Component {
 
     componentDidMount(){
         const {configureNext, Presets, create, Types, Properties} = LayoutAnimation;
-        // const spring
         configureNext({
             duration: 500,
             create: {
