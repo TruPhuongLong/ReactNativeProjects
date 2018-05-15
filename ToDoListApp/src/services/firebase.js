@@ -18,4 +18,8 @@ export const push = (endpoint, data) => {
     return firebase.database().ref(endpoint).push(data);
 }
 
-// firebase.database().ref('messages')
+export const login = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+
+export const signup = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
+
+export const logout = () => firebase.auth().signOut();

@@ -7,7 +7,11 @@ import {
     StyleSheet,
     ImageBackground,
     Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    ScrollView,
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import AddTask from './AddTask';
 import ItemTask from './ItemTask';
 import { getListTask, postTask } from '../services/userApi';
@@ -22,6 +26,7 @@ export default class ListTask extends Component {
         this.state = {
             listUsers: []
         }
+        keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
     }
 
     componentDidMount() {
@@ -64,12 +69,18 @@ export default class ListTask extends Component {
                 source={require('../assets/images/backgroundImage.jpg')}
                 style={localStyles.container}
             >
-                <AddTask add={this._add.bind(this)} />
-                <FlatList
-                    data={this.state.listUsers}
-                    keyExtractor={(item, index) => `${index}`}
-                    renderItem={({ item, index }) => <ItemTask item={item} close={this._close.bind(this)} />}
-                />
+                <KeyboardAwareScrollView
+                    contentContainerStyle={localStyles.container}
+                    scrollEnabled={true}
+                    extraScrollHeight={20}
+                >
+                    <FlatList
+                        data={this.state.listUsers}
+                        keyExtractor={(item, index) => `${index}`}
+                        renderItem={({ item, index }) => <ItemTask item={item} close={this._close.bind(this)} />}
+                    />
+                    <AddTask add={this._add.bind(this)} />
+                </KeyboardAwareScrollView>
             </ImageBackground>
         )
     }
@@ -78,8 +89,9 @@ export default class ListTask extends Component {
 const localStyles = StyleSheet.create({
     container: {
         flex: 1,
-        // opacity: 0.5,
-        backgroundColor: 'rgba(0,0,0,0.1)',
+    },
+    flatList: {
+        flex: 1
     }
 })
 
