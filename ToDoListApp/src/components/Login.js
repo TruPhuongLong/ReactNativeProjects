@@ -7,8 +7,9 @@ import {
     TouchableOpacity,
     Button,
     StyleSheet,
+    ScrollView,
 } from 'react-native';
-import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 export default class Logo extends Component {
     static navigationOptions = {
@@ -33,7 +34,7 @@ export default class Logo extends Component {
 
     render() {
         return (
-            <KeyboardAwareScrollView style={localStyles.container}>
+            <KeyboardAwareScrollView contentContainerStyle={localStyles.container}>
                 <Image source={require('../assets/images/logoBlochain.png')} style={localStyles.image} resizeMode='cover' />
                 <TextInput
                     style={localStyles.textInput}
