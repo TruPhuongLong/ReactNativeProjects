@@ -15,7 +15,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import AddTask from './AddTask';
 import ItemTask from './ItemTask';
 import { getListTask, postTask } from '../services/userApi';
-import {authService, authDecorator} from '../services/authService';
+import {authDecorator} from '../services/authService';
 
 class ListTask extends Component {
     static navigationOptions = {
@@ -97,8 +97,8 @@ const localStyles = StyleSheet.create({
 })
 
 
-export default authDecorator(ListTask);
-// export default ListTask;
+// export default authDecorator(ListTask);
+export default ListTask;
 
 
 

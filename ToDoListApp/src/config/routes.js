@@ -1,13 +1,12 @@
-import { createStackNavigator } from 'react-navigation';
 import ListTask from '../components/ListTask';
 import Login from '../components/Login';
 import Signup from '../components/Signup';
+import {createStackNavigator} from 'react-navigation';
 
-const Route = createStackNavigator({
+const Routes = {
     ListTask: { screen: ListTask },
     Login: { screen: Login },
     Signup: { screen: Signup },
-})
+}
 
-
-export default Route;
+export const AppNavigator = createStackNavigator(Routes);
