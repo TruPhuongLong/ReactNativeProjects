@@ -7,7 +7,6 @@ const Route = createStackNavigator({
     ListTask: { screen: ListTask },
     Login: { screen: Login },
     Signup: { screen: Signup },
-    
 })
 
 
