@@ -1,12 +1,17 @@
-import {createStore, applyMiddleware} from 'redux';
-import reducerTask from '../reducers/reducerTask';
+import {createStore, applyMiddleware, combineReducers} from 'redux';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
+// import logger from 'redux-logger';
 
-const middlewares = [thunk];
+import reducerTask from '../reducers/reducerTask';
+import reducerError from '../reducers/reducerError';
+import {emptyErrorLoggerMiddleware} from '../middleware/logger';
+import state from '../reducers/state';
 
-if(__DEV__){
-    middlewares.push(logger);
-}
+const reducers = combineReducers({reducerTask, reducerError})
+const middlewares = [thunk, emptyErrorLoggerMiddleware];
 
-export default createStore(reducerTask, applyMiddleware(...middlewares));
+// if(__DEV__){
+//     middlewares.push(logger);
+// }
+
+export default createStore(reducers, applyMiddleware(...middlewares));

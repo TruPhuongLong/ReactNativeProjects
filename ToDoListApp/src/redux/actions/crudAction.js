@@ -1,6 +1,4 @@
-export const typeAction = {
-    ADD_TASK: 'ADD-TASK'
-}
+import typeAction from './typeAction';
 export const addTask = (content) => {
     return {
         type: typeAction.ADD_TASK,
