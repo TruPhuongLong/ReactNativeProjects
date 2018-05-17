@@ -32,3 +32,23 @@ export const postTask = (content) => {
 //     }
 
 //
+
+// componentDidMount() {
+//     console.log('listTask componentDidMount')
+//     this.unSubscribeListTask = getListTask((snapShot) => {
+//         const listUsers = Object.values(snapShot.val() || {})
+//         this.setState({
+//             listUsers
+//         })
+
+//     })
+// }
+
+// componentWillUnmount() {
+//     this.unSubscribeListTask();
+// }
+
+// _add(text) {
+//     postTask(text);
+//     Keyboard.dismiss()
+// }

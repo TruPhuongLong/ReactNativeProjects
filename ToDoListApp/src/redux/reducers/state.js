@@ -3,7 +3,6 @@ const initialStateTask = {
         toDoList: [
             {content: "breakfast", isDone: true}
         ],
-        currentTask: '',
     },
     stateForReducerError: {
         errMsg: ''

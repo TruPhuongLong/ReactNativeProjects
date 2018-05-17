@@ -1,9 +1,15 @@
-import emptyErrorAction from '../actions/errorAction';
+import {emptyErrorAction} from '../actions/errorAction';
 
 export const emptyErrorLoggerMiddleware = store => next => action => {
-    console.log('run middleware emptyErrorTask, checking...');
-    if(!store.getState().reducerTask.currentTask.content){
-        next(emptyErrorAction)
+    const content = action.payload.content;
+    if(!content){
+        console.log('content is empty');
+        next(emptyErrorAction);
+        setTimeout(()=>{
+            const resetErrorAction = {...emptyErrorAction, message: ''};
+            next(resetErrorAction);
+        }, 3000);
+        return;
     }
     next(action);
 }

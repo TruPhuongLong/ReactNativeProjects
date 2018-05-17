@@ -16,52 +16,31 @@ import {connect} from 'react-redux';
 
 import AddTask from './AddTask';
 import ItemTask from './ItemTask';
-import { getListTask, postTask } from '../services/userApi';
-import { authDecorator } from '../services/authService';
+import {addTask} from '../redux/actions/crudAction';
+// import { authDecorator } from '../services/authService';
 
 class ListTask extends Component {
     static navigationOptions = {
         title: 'ListTask'
     }
 
-    constructor(props) {
-        super(props);
-        // this.state = {
-        //     listUsers: []
-        // }
+    constructor() {
+        super();
         keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;
     }
 
-    componentDidMount() {
-        // console.log('listTask componentDidMount')
-        // this.unSubscribeListTask = getListTask((snapShot) => {
-        //     const listUsers = Object.values(snapShot.val() || {})
-        //     this.setState({
-        //         listUsers
-        //     })
-
-        // })
-    }
-
-    componentWillUnmount() {
-        // this.unSubscribeListTask();
-    }
-
-    _add(text) {
-        // postTask(text);
-        // Keyboard.dismiss()
+    
+    _add(content) {
+        Keyboard.dismiss();
+        this.props.addTask(content);
     }
 
     _close(item) {
-        // const listUsers = this.state.listUsers.filter(i => i.id !== item.id);
-        // this.setState({
-        //     listUsers
-        // });
-        // console.log(listUsers);
+        
     }
 
     render() {
-        const {listUsers} = this.props;
+        const {listUsers, errMsg} = this.props;
         return (
             <ImageBackground
                 source={require('../assets/images/backgroundImage.jpg')}
@@ -73,6 +52,7 @@ class ListTask extends Component {
                     extraScrollHeight={20}
                 >
                     <AddTask add={this._add.bind(this)} />
+                    {errMsg ? <Text style={localStyles.errMsg}>{errMsg}</Text> : false}
                     <FlatList
                         data={listUsers}
                         keyExtractor={(item, index) => `${index}`}
@@ -90,6 +70,9 @@ const localStyles = StyleSheet.create({
     },
     flatList: {
         flex: 1
+    },
+    errMsg: {
+        color: 'red'
     }
 })
 
@@ -97,13 +80,15 @@ const localStyles = StyleSheet.create({
 
 const mapStateToProps = (state) => {
     return { 
-        listUsers: state.reducerTask.toDoList
+        listUsers: state.reducerTask.toDoList,
+        errMsg: state.reducerError.errMsg,
     }
 }
 function mapDispatchToProps(dispatch) {
     return {
-        addMessage: (message) => {
-            dispatch(addMessage(message))
+        addTask: (content) => {
+            console.log(`_add run... with content: ${content}`)
+            dispatch(addTask(content))
         }
     }
 }
@@ -111,6 +96,7 @@ function mapDispatchToProps(dispatch) {
 // export default ListTask;
 export default connect(
     mapStateToProps,
+    mapDispatchToProps,
 )(ListTask);
 
 

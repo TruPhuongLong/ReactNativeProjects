@@ -8,7 +8,7 @@ import {emptyErrorLoggerMiddleware} from '../middleware/logger';
 import state from '../reducers/state';
 
 const reducers = combineReducers({reducerTask, reducerError})
-const middlewares = [thunk, emptyErrorLoggerMiddleware];
+const middlewares = [thunk, emptyErrorLoggerMiddleware]; 
 
 // if(__DEV__){
 //     middlewares.push(logger);
