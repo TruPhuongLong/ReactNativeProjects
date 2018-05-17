@@ -10,8 +10,13 @@ export default reducerTask = (state = initialStateTask.stateForReducerTask, acti
                 toDoList: [
                     ...state.toDoList,
                     action.payload
-                ],
-                currentTask: action.payload
+                ]
+            }
+        case typeAction.REMOVE_TASK:
+            const toDoList = state.toDoList.filter(payload => payload.content !== action.payload.content);
+            return {
+                ...state,
+                toDoList
             }
         default:
             return state;

@@ -16,7 +16,7 @@ import {connect} from 'react-redux';
 
 import AddTask from './AddTask';
 import ItemTask from './ItemTask';
-import {addTask} from '../redux/actions/crudAction';
+import {addTask, removeTask} from '../redux/actions/crudAction';
 // import { authDecorator } from '../services/authService';
 
 class ListTask extends Component {
@@ -36,7 +36,7 @@ class ListTask extends Component {
     }
 
     _close(item) {
-        
+        this.props.removeTask(item);
     }
 
     render() {
@@ -87,8 +87,12 @@ const mapStateToProps = (state) => {
 function mapDispatchToProps(dispatch) {
     return {
         addTask: (content) => {
-            console.log(`_add run... with content: ${content}`)
-            dispatch(addTask(content))
+            console.log(`_add run... with content: ${content}`);
+            dispatch(addTask(content));
+        },
+        removeTask: (item) => {
+            console.log(`_close run... with content: ${item.content}`);
+            dispatch(removeTask(item));
         }
     }
 }
