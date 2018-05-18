@@ -1,0 +1,5 @@
+dependencies: \
+  /Users/blsmac1/Desktop/ReactNativeProjectGit/ToDoListApp/node_modules/react-native/React/Modules/RCTUIManagerUtils.m \
+  /Users/blsmac1/Desktop/ReactNativeProjectGit/ToDoListApp/node_modules/react-native/React/Modules/RCTUIManagerUtils.h \
+  /Users/blsmac1/Desktop/ReactNativeProjectGit/ToDoListApp/node_modules/react-native/React/Base/RCTAssert.h \
+  /Users/blsmac1/Desktop/ReactNativeProjectGit/ToDoListApp/node_modules/react-native/React/Base/RCTDefines.h
